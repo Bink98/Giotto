@@ -1403,7 +1403,7 @@ spot_deconvolution<-function(expr,
             }
             uniq_ct_k_gene<-intersect(rownames(ct_exp),unique(ct_k_gene))
             S_k<-Matrix::as.matrix(ct_exp[uniq_ct_k_gene,ct_spot_k])
-            if (length(which(B != 0)) > 0){
+            if (length(which(B[uniq_ct_k_gene,] != 0)) > 0){
               solDWLS<-optimize_solveDampenedWLS(S_k,B[uniq_ct_k_gene,],constant_J)
               dwls_results[names(solDWLS),colnames(cluster_cell_exp)[k]]<-solDWLS
             }
